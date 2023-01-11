@@ -1,7 +1,6 @@
 package com.example.recyclev.model
 
 import com.github.javafaker.Faker
-import java.util.Collections
 
 typealias PostsListener = (posts: List<Post>) -> Unit
 
@@ -18,7 +17,8 @@ class PostService {
             id = it.toLong(),
             photo = IMAGES[it % IMAGES.size],
             title = "Квартира",
-            description = faker.address().cityName(),
+            town = faker.address().cityName(),
+            description = "Крутейшая хата с топовым видом.\nТоп за свои деньги.\nСкорее пишите и звоните!",
             Price = PRICE[it % IMAGES.size].toLong(),
         )}.toMutableList()
     }
@@ -27,20 +27,15 @@ class PostService {
         return posts
     }
 
+    fun getById(id: Long): Post {
+        return posts.firstOrNull { it.id == id } ?: throw Exception("not found")
+    }
+
     fun deletePost(post: Post){
         val index = posts.indexOfFirst { it.id == post.id }
         if(index != -1){
             posts.removeAt(index)
         }
-        notifyChanges()
-    }
-
-    fun movePost(post: Post, moveBy: Int){
-        val oldIndex = posts.indexOfFirst { it.id == post.id }
-        if(oldIndex == -1) return
-        val newIndex = oldIndex + moveBy
-        if(newIndex < 0 || newIndex >= posts.size) return
-        Collections.swap(posts, oldIndex, newIndex)
         notifyChanges()
     }
 

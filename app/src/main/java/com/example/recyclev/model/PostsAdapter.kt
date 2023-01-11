@@ -43,7 +43,7 @@ class PostsAdapter(
             holder.itemView.tag = post
             moreImageViewButton.tag = post
             postTitleTextView.text = post.title
-            postDescTextView.text = post.description
+            postDescTextView.text = post.town
             postPriceTextView.text = post.Price.toString()
             if(post.photo.isNotBlank()) {
                 Glide.with(photoImageView)
