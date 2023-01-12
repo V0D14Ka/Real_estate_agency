@@ -3,14 +3,13 @@ package com.example.recyclev.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.recyclev.model.Post
-import com.example.recyclev.model.PostService
-import com.example.recyclev.model.PostsListener
+import com.example.recyclev.model.post.Post
+import com.example.recyclev.model.post.PostService
+import com.example.recyclev.model.post.PostsListener
 
 class PostsListViewModel(
     private var postService : PostService
 ) : ViewModel() {
-
     private val _posts = MutableLiveData<List<Post>>()
     val posts: LiveData<List<Post>> = _posts
 

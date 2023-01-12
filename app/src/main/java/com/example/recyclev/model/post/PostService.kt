@@ -1,4 +1,4 @@
-package com.example.recyclev.model
+package com.example.recyclev.model.post
 
 import com.github.javafaker.Faker
 
@@ -9,7 +9,6 @@ class PostService {
     private var posts = mutableListOf<Post>()
 
     private val listeners = mutableListOf<PostsListener>()
-
     init{
         val faker = Faker.instance()
         IMAGES.shuffle()

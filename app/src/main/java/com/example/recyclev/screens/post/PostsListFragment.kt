@@ -1,4 +1,4 @@
-package com.example.recyclev.screens
+package com.example.recyclev.screens.post
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.recyclev.PostActionListener
-import com.example.recyclev.PostsAdapter
+import com.example.recyclev.model.post.PostActionListener
+import com.example.recyclev.model.post.PostsAdapter
 import com.example.recyclev.databinding.FragmentPostsListBinding
-import com.example.recyclev.model.Post
+import com.example.recyclev.model.post.Post
 import com.example.recyclev.viewmodel.PostsListViewModel
 
 class PostsListFragment : Fragment() {
@@ -25,7 +25,7 @@ class PostsListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentPostsListBinding.inflate(inflater, container, false)
         adapter = PostsAdapter(object : PostActionListener{
             override fun onPostFavorite(post: Post) {
@@ -37,7 +37,6 @@ class PostsListFragment : Fragment() {
             }
 
         })
-
         viewModel.posts.observe(viewLifecycleOwner, Observer {
             adapter.posts = it
         } )

@@ -1,6 +1,6 @@
-package com.example.recyclev
+package com.example.recyclev.screens.main
 
-import com.example.recyclev.model.Post
+import com.example.recyclev.model.post.Post
 
 interface Navigator {
 

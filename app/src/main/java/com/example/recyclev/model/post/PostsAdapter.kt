@@ -1,12 +1,12 @@
-package com.example.recyclev
+package com.example.recyclev.model.post
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.recyclev.R
 import com.example.recyclev.databinding.ItemPostBinding
-import com.example.recyclev.model.Post
 
 interface PostActionListener {
 

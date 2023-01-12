@@ -1,12 +1,13 @@
-package com.example.recyclev
+package com.example.recyclev.screens.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.recyclev.R
 import com.example.recyclev.databinding.ActivityMainBinding
-import com.example.recyclev.model.Post
-import com.example.recyclev.screens.PostDetailsFragment
-import com.example.recyclev.screens.PostsListFragment
+import com.example.recyclev.model.post.Post
+import com.example.recyclev.screens.post.PostDetailsFragment
+import com.example.recyclev.screens.post.PostsListFragment
 
 class MainActivity : AppCompatActivity(), Navigator {
 

@@ -1,10 +1,10 @@
-package com.example.recyclev.screens
+package com.example.recyclev.screens.post
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.recyclev.App
-import com.example.recyclev.Navigator
+import com.example.recyclev.screens.main.App
+import com.example.recyclev.screens.main.Navigator
 import com.example.recyclev.viewmodel.PostsDetailsViewModel
 import com.example.recyclev.viewmodel.PostsListViewModel
 

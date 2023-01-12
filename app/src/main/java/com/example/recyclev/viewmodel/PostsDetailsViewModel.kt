@@ -3,8 +3,8 @@ package com.example.recyclev.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.recyclev.model.Post
-import com.example.recyclev.model.PostService
+import com.example.recyclev.model.post.Post
+import com.example.recyclev.model.post.PostService
 
 class PostsDetailsViewModel(
     private val postService: PostService

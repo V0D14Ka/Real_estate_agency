@@ -1,4 +1,4 @@
-package com.example.recyclev.model
+package com.example.recyclev.model.post
 
 data class Post (
     val id: Long,

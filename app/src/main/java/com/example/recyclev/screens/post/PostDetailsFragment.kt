@@ -1,4 +1,4 @@
-package com.example.recyclev.screens
+package com.example.recyclev.screens.post
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,17 +18,15 @@ class PostDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentPostDetailBinding
     private val viewModel: PostsDetailsViewModel by viewModels { factory() }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.loadPost(requireArguments().getLong(ARG_POST_ID))
     }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentPostDetailBinding.inflate(layoutInflater, container, false)
 
         viewModel.postDetails.observe(viewLifecycleOwner, Observer {
@@ -47,7 +45,6 @@ class PostDetailsFragment : Fragment() {
             }
             binding.postDetailsTextView.text = it.description
         })
-
         return binding.root
     }
 
