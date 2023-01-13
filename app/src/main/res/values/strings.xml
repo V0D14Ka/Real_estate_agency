@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RecycleV</string>
+    <string name="invalid_email_or_password">Неверный логин/пароль</string>
+    <string name="field_is_empty">Empty</string>
 </resources>

@@ -42,6 +42,9 @@ class UsersRepository(
             if (e is BackendException && e.code == 401) {
                 // map 401 error for sign-in to InvalidCredentialsException
                 throw InvalidCredentialsException(e)
+            }
+            if (e is BackendException && e.code == 400) {
+                throw InvalidInputException(e)
             } else {
                 throw e
             }

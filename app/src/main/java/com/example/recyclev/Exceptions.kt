@@ -25,6 +25,8 @@ class AuthException(
 
 class InvalidCredentialsException(cause: Exception) : AppException(cause = cause)
 
+class InvalidInputException(cause: Exception) : AppException(cause = cause)
+
 class ConnectionException(cause: Throwable) : AppException(cause = cause)
 
 open class BackendException(

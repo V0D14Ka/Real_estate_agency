@@ -19,7 +19,6 @@ class RetrofitUsersSource (
 
     override suspend fun signIn(email: String, password: String
     ): String = wrapRetrofitExceptions{
-        delay(1000)
         val signInRequestEntity = SignInRequestEntity(
             email = email,
             password = password
@@ -29,7 +28,6 @@ class RetrofitUsersSource (
 
     override suspend fun signUp(signUpData: SignUpData
     ) = wrapRetrofitExceptions {
-        delay(1000)
         val signUpRequestEntity = SignUpRequestEntity(
             email = signUpData.email,
             username = signUpData.username,
@@ -39,13 +37,11 @@ class RetrofitUsersSource (
     }
 
     override suspend fun getUser(): User = wrapRetrofitExceptions {
-        delay(1000)
         usersApi.getUser().toUser()
     }
 
     override suspend fun setUsername(username: String
     ) = wrapRetrofitExceptions {
-        delay(1000)
         val updateUsernameRequestEntity = UpdateUsernameRequestEntity(
             username = username
         )

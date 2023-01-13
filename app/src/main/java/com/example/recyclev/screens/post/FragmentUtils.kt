@@ -7,6 +7,7 @@ import com.example.recyclev.screens.main.App
 import com.example.recyclev.screens.main.Navigator
 import com.example.recyclev.viewmodel.PostsDetailsViewModel
 import com.example.recyclev.viewmodel.PostsListViewModel
+import com.example.recyclev.viewmodel.SignInViewModel
 
 
 class ViewModelFactory(
@@ -20,6 +21,9 @@ class ViewModelFactory(
             }
             PostsDetailsViewModel::class.java -> {
                 PostsDetailsViewModel(app.postsService)
+            }
+            SignInViewModel::class.java -> {
+                SignInViewModel()
             }
             else -> {
                 throw IllegalStateException("Unknown view model class")

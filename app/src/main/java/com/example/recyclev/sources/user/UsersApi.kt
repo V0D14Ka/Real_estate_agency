@@ -8,7 +8,7 @@ import retrofit2.http.PUT
 
 interface UsersApi {
 
-    @POST("")
+    @POST("auth/token/login")
     suspend fun signIn(
         @Body signInRequestEntity: SignInRequestEntity
     ): SignInResponseEntity

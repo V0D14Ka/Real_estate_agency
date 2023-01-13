@@ -27,7 +27,7 @@ object SourceProviderHolder {
      */
     private fun createRetrofit(moshi: Moshi): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl("http://95.154.68.102/api/")
             .client(createOkHttpClient())
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()

@@ -19,7 +19,7 @@ open class BaseRetrofitSource(
     suspend fun <T> wrapRetrofitExceptions(block: suspend () -> T): T {
         return try {
             block()
-        } catch (e: JsonDataException){
+        } catch (e: JsonDataException) {
             throw ParseBackendResponseException(e)
         } catch (e: JsonEncodingException) {
             throw ParseBackendResponseException(e)
@@ -33,15 +33,15 @@ open class BaseRetrofitSource(
     private fun createBackendException(e: HttpException): Exception {
         return try{
             val errorBody = errorAdapter.fromJson(
-                e.response()!!.errorBody()!!.string()
+                e.response()?.errorBody()!!.string()
             )!!
-            BackendException(e.code(), errorBody.error)
+            BackendException(e.code(), errorBody.non_field_errors[0])
         } catch (e: Exception) {
             throw ParseBackendResponseException(e)
         }
     }
 
     class ErrorResponseBody(
-        val error: String
+        val non_field_errors: Array<String>
     )
 }
