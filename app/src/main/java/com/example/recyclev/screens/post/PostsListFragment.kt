@@ -12,6 +12,8 @@ import com.example.recyclev.model.post.PostActionListener
 import com.example.recyclev.model.post.PostsAdapter
 import com.example.recyclev.databinding.FragmentPostsListBinding
 import com.example.recyclev.model.post.Post
+import com.example.recyclev.screens.factory
+import com.example.recyclev.screens.navigator
 import com.example.recyclev.viewmodel.PostsListViewModel
 
 class PostsListFragment : Fragment() {

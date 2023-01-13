@@ -16,7 +16,8 @@ interface UsersApi {
     @POST("")
     suspend fun signUp(@Body body : SignUpRequestEntity)
 
-    @GET("")
+    // todo
+    @GET("users/2")
     suspend fun getUser(): GetUserResponseEntity
 
     @PUT("")

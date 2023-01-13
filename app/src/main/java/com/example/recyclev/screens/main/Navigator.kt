@@ -10,4 +10,6 @@ interface Navigator {
 
     fun toast(messageRes: Int)
 
+    fun onSignedIn()
+
 }

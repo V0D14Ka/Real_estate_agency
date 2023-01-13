@@ -1,4 +1,4 @@
-package com.example.recyclev.screens.post
+package com.example.recyclev.screens
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel

@@ -27,14 +27,17 @@ class SignInViewModel(
     private val _showAuthErrorToastEvent = MutableLiveEvent<Int>()
     val showAuthToastEvent = _showAuthErrorToastEvent.share()
 
+    private val _onNextPageEvent = MutableUnitLiveEvent()
+    val onNextPageEvent = _onNextPageEvent.share()
+
 //    private val _navigateToTabsEvent = MutableUnitLiveEvent()
 //    val navigateToTabsEvent = _navigateToTabsEvent.share()
 
-    fun signIn(email: String, password: String) = viewModelScope.launch {
+    fun signIn(username: String, password: String) = viewModelScope.launch {
         showProgress()
         try {
-            usersRepository.signIn(email, password)
-            TODO()
+            usersRepository.signIn(username, password)
+            processOK()
         } catch (e: EmptyFieldException) {
             processEmptyFieldException(e)
         } catch (e: InvalidCredentialsException) {
@@ -53,6 +56,11 @@ class SignInViewModel(
             emptyPasswordError = e.field == Field.Password
         )
     }
+
+    private fun processOK() {
+        onNextPage()
+    }
+
 
     private fun processInvalidCredentialsException() {
         clearPasswordField()
@@ -75,6 +83,8 @@ class SignInViewModel(
     private fun clearPasswordField() = _clearPasswordEvent.publishEvent()
 
     private fun showAuthErrorToast() = _showAuthErrorToastEvent.publishEvent(R.string.invalid_email_or_password)
+
+    private fun onNextPage() = _onNextPageEvent.publishEvent()
 
 
     data class State(

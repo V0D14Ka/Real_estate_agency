@@ -1,5 +1,5 @@
 package com.example.recyclev.sources.user.entities
 
 data class SignInResponseEntity(
-    val token: String
+    val auth_token: String
     )

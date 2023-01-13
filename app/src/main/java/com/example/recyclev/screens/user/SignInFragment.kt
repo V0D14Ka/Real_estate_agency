@@ -9,7 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.recyclev.R
 import com.example.recyclev.databinding.FragmentSignInBinding
-import com.example.recyclev.screens.post.factory
+import com.example.recyclev.screens.factory
+import com.example.recyclev.screens.navigator
 import com.example.recyclev.utils.observeEvent
 import com.example.recyclev.viewmodel.SignInViewModel
 
@@ -29,6 +30,7 @@ class SignInFragment : Fragment() {
         observeState()
         observeClearPasswordEvent()
         observeShowAuthErrorMessageEvent()
+        observeOnNextPageEvent()
         return binding.root
     }
 
@@ -43,6 +45,10 @@ class SignInFragment : Fragment() {
         binding.progressBar.visibility = if (it.showProgress) View.VISIBLE else View.INVISIBLE
     }
 
+    private fun observeOnNextPageEvent() = viewModel.onNextPageEvent.observeEvent(viewLifecycleOwner) {
+        navigator().onSignedIn()
+    }
+
     private fun observeShowAuthErrorMessageEvent() = viewModel.showAuthToastEvent.observeEvent(viewLifecycleOwner) {
         binding.ErrorTextView.text = resources.getString(it)
         binding.ErrorTextView.visibility = View.VISIBLE
@@ -55,7 +61,7 @@ class SignInFragment : Fragment() {
     private fun onSignInButtonPressed() {
         binding.ErrorTextView.visibility = View.GONE
         viewModel.signIn(
-            email = binding.EmailEditTextView.text.toString(),
+            username = binding.EmailEditTextView.text.toString(),
             password = binding.PasswordEditTextView.text.toString()
         )
     }

@@ -32,12 +32,12 @@ class UsersRepository(
      * @throws BackendException
      * @throws ParseBackendResponseException
      */
-    suspend fun signIn(email: String, password: String) {
-        if (email.isBlank()) throw EmptyFieldException(Field.Email)
+    suspend fun signIn(username: String, password: String) {
+        if (username.isBlank()) throw EmptyFieldException(Field.Email)
         if (password.isBlank()) throw EmptyFieldException(Field.Password)
 
         val token = try {
-            usersSource.signIn(email, password)
+            usersSource.signIn(username, password)
         } catch (e: Exception) {
             if (e is BackendException && e.code == 401) {
                 // map 401 error for sign-in to InvalidCredentialsException

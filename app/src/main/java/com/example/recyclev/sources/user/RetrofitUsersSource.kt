@@ -17,13 +17,13 @@ class RetrofitUsersSource (
     private val usersApi =
         retrofit.create(UsersApi::class.java)
 
-    override suspend fun signIn(email: String, password: String
+    override suspend fun signIn(username: String, password: String
     ): String = wrapRetrofitExceptions{
         val signInRequestEntity = SignInRequestEntity(
-            email = email,
+            username = username,
             password = password
         )
-        usersApi.signIn(signInRequestEntity).token
+        usersApi.signIn(signInRequestEntity).auth_token
     }
 
     override suspend fun signUp(signUpData: SignUpData

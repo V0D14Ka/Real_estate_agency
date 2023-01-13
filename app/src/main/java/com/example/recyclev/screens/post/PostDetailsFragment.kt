@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.recyclev.R
 import com.example.recyclev.databinding.FragmentPostDetailBinding
+import com.example.recyclev.screens.factory
 
 import com.example.recyclev.viewmodel.PostsDetailsViewModel
 
