@@ -69,7 +69,14 @@ class UsersRepository(
             usersSource.signUp(signUpData)
         } catch (e: BackendException) {
             // user with such email already exists
-            if (e.code == 409) throw AccountAlreadyExistsException(e)
+            if (e.code == 400 ) {
+                if (e.message == "Пользователь с таким именем уже существует.")
+                    throw AccountAlreadyExistsException(e)
+                else if (e.message == "Введите правильный адрес электронной почты.")
+                    throw IncorrectEmailException(e)
+                else
+                    throw IncorrectPasswordException(e)
+            }
             else throw e
         }
     }

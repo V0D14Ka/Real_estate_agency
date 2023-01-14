@@ -13,7 +13,7 @@ interface UsersApi {
         @Body signInRequestEntity: SignInRequestEntity
     ): SignInResponseEntity
 
-    @POST("")
+    @POST("auth/users/")
     suspend fun signUp(@Body body : SignUpRequestEntity)
 
     // todo

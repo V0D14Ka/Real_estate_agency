@@ -27,6 +27,8 @@ class SignInFragment : Fragment() {
         binding = FragmentSignInBinding.inflate(inflater, container, false)
 
         binding.buttonSignIn.setOnClickListener { onSignInButtonPressed() }
+        binding.buttonSignUp.setOnClickListener { onSignUpButtonPressed() }
+
         observeState()
         observeClearPasswordEvent()
         observeShowAuthErrorMessageEvent()
@@ -65,4 +67,9 @@ class SignInFragment : Fragment() {
             password = binding.PasswordEditTextView.text.toString()
         )
     }
+
+    private fun onSignUpButtonPressed() {
+        navigator().signUp()
+    }
+
 }

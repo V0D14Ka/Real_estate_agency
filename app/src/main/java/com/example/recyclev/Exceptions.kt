@@ -18,6 +18,14 @@ class AccountAlreadyExistsException(
     cause: Throwable
 ) : AppException(cause = cause)
 
+class IncorrectEmailException(
+    cause: Throwable
+) : AppException(cause = cause)
+
+class IncorrectPasswordException(
+    cause: Throwable
+) : AppException(cause = cause)
+
 // BackendException with statusCode=401 is usually mapped to this exception
 class AuthException(
     cause: Throwable

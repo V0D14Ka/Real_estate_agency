@@ -12,4 +12,8 @@ interface Navigator {
 
     fun onSignedIn()
 
+    fun onSignedUp()
+
+    fun signUp()
+
 }

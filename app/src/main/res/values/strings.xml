@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">RecycleV</string>
+    <string name="app_name">Теплотрасса</string>
     <string name="invalid_email_or_password">Неверный логин/пароль</string>
     <string name="field_is_empty">Empty</string>
+    <string name="password_mismatch">Пароли не совпадают</string>
+    <string name="account_already_exists">Аккаунт уже существует</string>
+    <string name="sign_up_success">Регистрация успешна</string>
+    <string name="incorrect_email">Некорректный email</string>
+    <string name="incorrect_password">Слишком простой пароль</string>
 </resources>

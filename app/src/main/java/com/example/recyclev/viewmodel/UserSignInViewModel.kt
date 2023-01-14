@@ -30,6 +30,9 @@ class SignInViewModel(
     private val _onNextPageEvent = MutableUnitLiveEvent()
     val onNextPageEvent = _onNextPageEvent.share()
 
+    private val _signUpEvent = MutableUnitLiveEvent()
+    val signUpEvent = _signUpEvent.share()
+
 //    private val _navigateToTabsEvent = MutableUnitLiveEvent()
 //    val navigateToTabsEvent = _navigateToTabsEvent.share()
 
@@ -85,6 +88,8 @@ class SignInViewModel(
     private fun showAuthErrorToast() = _showAuthErrorToastEvent.publishEvent(R.string.invalid_email_or_password)
 
     private fun onNextPage() = _onNextPageEvent.publishEvent()
+
+    private fun signUp() = _signUpEvent.publishEvent()
 
 
     data class State(

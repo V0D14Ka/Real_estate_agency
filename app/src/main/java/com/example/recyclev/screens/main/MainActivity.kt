@@ -17,6 +17,7 @@ import com.example.recyclev.model.user.UsersSource
 import com.example.recyclev.screens.post.PostDetailsFragment
 import com.example.recyclev.screens.post.PostsListFragment
 import com.example.recyclev.screens.user.SignInFragment
+import com.example.recyclev.screens.user.SignUpFragment
 import org.apache.commons.lang3.ObjectUtils.Null
 
 class MainActivity : AppCompatActivity(), Navigator {
@@ -54,6 +55,20 @@ class MainActivity : AppCompatActivity(), Navigator {
             .replace(R.id.fragmentContainer, PostsListFragment())
             .commit()
     }
+
+    override fun signUp() {
+        supportFragmentManager.beginTransaction()
+            .addToBackStack(null)
+            .replace(R.id.fragmentContainer, SignUpFragment())
+            .commit()
+    }
+
+    override fun onSignedUp() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, SignInFragment())
+            .commit()
+    }
+
 
     override fun goBack() {
         onBackPressed()
