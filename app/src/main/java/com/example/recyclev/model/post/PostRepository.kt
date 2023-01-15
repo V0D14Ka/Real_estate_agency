@@ -4,25 +4,32 @@ import com.github.javafaker.Faker
 
 typealias PostsListener = (posts: List<Post>) -> Unit
 
-class PostService {
+class PostRepository (
+    private val postsSource: PostsSource
+) {
 
     private var posts = mutableListOf<Post>()
 
     private val listeners = mutableListOf<PostsListener>()
-    init{
-        val faker = Faker.instance()
-        IMAGES.shuffle()
-        posts = (1..100).map {Post(
-            id = it.toLong(),
-            photo = IMAGES[it % IMAGES.size],
-            title = "Квартира",
-            town = faker.address().cityName(),
-            description = "Крутейшая хата с топовым видом.\nТоп за свои деньги.\nСкорее пишите и звоните!",
-            Price = PRICE[it % IMAGES.size].toLong(),
-        )}.toMutableList()
+
+//    init{
+//        val faker = Faker.instance()
+//        IMAGES.shuffle()
+//        posts = (1..100).map {Post(
+//            id = it.toLong(),
+//            photo = IMAGES[it % IMAGES.size],
+//            title = "Квартира",
+//            town = faker.address().cityName(),
+//            description = "Крутейшая хата с топовым видом.\nТоп за свои деньги.\nСкорее пишите и звоните!",
+//            Price = PRICE[it % IMAGES.size].toLong(),
+//        )}.toMutableList()
+//    }
+
+    suspend fun getPostsFromApi() {
+        posts = postsSource.getPosts().toMutableList()
     }
 
-    fun getPosts(): List<Post>{
+    fun getPosts(): List<Post> {
         return posts
     }
 

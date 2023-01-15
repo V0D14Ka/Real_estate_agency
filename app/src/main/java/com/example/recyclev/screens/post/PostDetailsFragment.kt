@@ -31,12 +31,12 @@ class PostDetailsFragment : Fragment() {
         binding = FragmentPostDetailBinding.inflate(layoutInflater, container, false)
 
         viewModel.postDetails.observe(viewLifecycleOwner, Observer {
-            binding.postTitleTextView.text = it.title
-            binding.postPriceTextView.text = it.Price.toString()
-            binding.postTownTextView.text = it.town
-            if (it.photo.isNotBlank()) {
+            binding.postTitleTextView.text = it.owner
+            binding.postPriceTextView.text = it.price.toString()
+            binding.postTownTextView.text = it.address
+            if (it.preview.isNotBlank()) {
                 Glide.with(this)
-                    .load(it.photo)
+                    .load(it.preview)
                     .circleCrop()
                     .into(binding.photoImageView)
             } else {
@@ -55,9 +55,9 @@ class PostDetailsFragment : Fragment() {
 
         private const val ARG_POST_ID = "ARG_POST_ID"
 
-        fun newInstance(userId: Long) : PostDetailsFragment {
+        fun newInstance(postId: Long) : PostDetailsFragment {
             val fragment = PostDetailsFragment()
-            fragment.arguments = bundleOf(ARG_POST_ID to userId)
+            fragment.arguments = bundleOf(ARG_POST_ID to postId)
             return fragment
         }
     }

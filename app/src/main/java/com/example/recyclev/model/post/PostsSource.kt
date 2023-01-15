@@ -1,15 +1,11 @@
-package com.example.recyclev.model.user
+package com.example.recyclev.model.post
 
-interface UsersSource {
+import com.example.recyclev.model.user.SignUpData
+import com.example.recyclev.model.user.User
 
-    /**
-     * Execute sign-in request.
-     * @throws ConnectionException
-     * @throws BackendException
-     * @throws ParseBackendResponseException
-     * @return JWT-token
-     */
-    suspend fun signIn(username: String, password: String): String
+interface PostsSource {
+
+//    suspend fun signIn(email: String, password: String): String
 
     /**
      * Create a new account.
@@ -17,7 +13,7 @@ interface UsersSource {
      * @throws BackendException
      * @throws ParseBackendResponseException
      */
-    suspend fun signUp(signUpData: SignUpData)
+//    suspend fun signUp(signUpData: SignUpData)
 
     /**
      * Get the account info of the current signed-in user.
@@ -25,7 +21,7 @@ interface UsersSource {
      * @throws BackendException
      * @throws ParseBackendResponseException
      */
-    suspend fun getUser(): User
+    suspend fun getPosts(): List<Post>
 
     /**
      * Change the username of the current signed-in user.
@@ -33,6 +29,5 @@ interface UsersSource {
      * @throws BackendException
      * @throws ParseBackendResponseException
      */
-    suspend fun setUsername(username: String)
-
+//    suspend fun setUsername(username: String)
 }

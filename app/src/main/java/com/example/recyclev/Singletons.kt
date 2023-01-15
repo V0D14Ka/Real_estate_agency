@@ -1,6 +1,8 @@
 package com.example.recyclev
 
 import android.content.Context
+import com.example.recyclev.model.post.PostRepository
+import com.example.recyclev.model.post.PostsSource
 import com.example.recyclev.model.settings.AppSettings
 import com.example.recyclev.model.settings.SharedPreferencesAppSettings
 import com.example.recyclev.model.user.UsersRepository
@@ -25,12 +27,22 @@ object Singletons {
     private val usersSource: UsersSource by lazy {
         sourcesProvider.getUsersSource()
     }
+
+    private val postsSource: PostsSource by lazy {
+        sourcesProvider.getPostsSource()
+    }
     // --- repositories
 
     val usersRepository: UsersRepository by lazy {
         UsersRepository(
             usersSource = usersSource,
             appSettings = appSettings
+        )
+    }
+
+    val postRepository: PostRepository by lazy {
+        PostRepository(
+            postsSource = postsSource
         )
     }
     /**

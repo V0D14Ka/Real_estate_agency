@@ -1,5 +1,6 @@
 package com.example.recyclev.model.post
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,17 +38,18 @@ class PostsAdapter(
         return PostsViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
         val post = posts[position]
         with(holder.binding){
             holder.itemView.tag = post
             moreImageViewButton.tag = post
             postTitleTextView.text = post.title
-            postDescTextView.text = post.town
-            postPriceTextView.text = post.Price.toString()
-            if(post.photo.isNotBlank()) {
+            postDescTextView.text = post.address
+            postPriceTextView.text = post.price.toString() + "₽"
+            if(post.preview.isNotBlank()) {
                 Glide.with(photoImageView)
-                    .load(post.photo)
+                    .load(post.preview)
                     .circleCrop()
                     .placeholder(R.drawable.ic_post_avatar)
                     .error(R.drawable.ic_post_avatar)

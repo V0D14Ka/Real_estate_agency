@@ -3,7 +3,7 @@ package com.example.recyclev.screens
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.recyclev.screens.main.App
+import com.example.recyclev.Singletons
 import com.example.recyclev.screens.main.Navigator
 import com.example.recyclev.viewmodel.PostsDetailsViewModel
 import com.example.recyclev.viewmodel.PostsListViewModel
@@ -12,16 +12,16 @@ import com.example.recyclev.viewmodel.SignUpViewModel
 
 
 class ViewModelFactory(
-    private val app: App
+    private val singletons: Singletons
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         val viewModel = when(modelClass) {
             PostsListViewModel::class.java -> {
-                PostsListViewModel(app.postsService)
+                PostsListViewModel(singletons.postRepository)
             }
             PostsDetailsViewModel::class.java -> {
-                PostsDetailsViewModel(app.postsService)
+                PostsDetailsViewModel(singletons.postRepository)
             }
             SignInViewModel::class.java -> {
                 SignInViewModel()
@@ -37,6 +37,6 @@ class ViewModelFactory(
     }
 }
 
-fun Fragment.factory() = ViewModelFactory(requireContext().applicationContext as App)
+fun Fragment.factory() = ViewModelFactory(Singletons)
 
 fun Fragment.navigator() = requireActivity() as Navigator
