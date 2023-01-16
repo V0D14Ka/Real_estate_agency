@@ -16,7 +16,7 @@ interface UsersApi {
     @POST("auth/users/")
     suspend fun signUp(@Body body : SignUpRequestEntity)
 
-    // todo
+    // todo(Убрать хардкод)
     @GET("users/2")
     suspend fun getUser(): GetUserResponseEntity
 

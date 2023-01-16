@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.example.recyclev.R
 import com.example.recyclev.databinding.FragmentSignInBinding
-import com.example.recyclev.screens.factory
-import com.example.recyclev.screens.navigator
+import com.example.recyclev.utils.factory
 import com.example.recyclev.utils.observeEvent
 import com.example.recyclev.viewmodel.SignInViewModel
 
@@ -47,10 +48,6 @@ class SignInFragment : Fragment() {
         binding.progressBar.visibility = if (it.showProgress) View.VISIBLE else View.INVISIBLE
     }
 
-    private fun observeOnNextPageEvent() = viewModel.onNextPageEvent.observeEvent(viewLifecycleOwner) {
-        navigator().onSignedIn()
-    }
-
     private fun observeShowAuthErrorMessageEvent() = viewModel.showAuthToastEvent.observeEvent(viewLifecycleOwner) {
         binding.ErrorTextView.text = resources.getString(it)
         binding.ErrorTextView.visibility = View.VISIBLE
@@ -68,8 +65,16 @@ class SignInFragment : Fragment() {
         )
     }
 
-    private fun onSignUpButtonPressed() {
-        navigator().signUp()
+    //navigate
+    private fun observeOnNextPageEvent() = viewModel.onNextPageEvent.observeEvent(viewLifecycleOwner) {
+        findNavController().navigate(R.id.action_signInFragment_to_tabsFragment, null, navOptions {
+            popUpTo(R.id.signInFragment) {
+                inclusive = true
+            }
+        })
     }
 
+    private fun onSignUpButtonPressed() {
+        findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
+    }
 }

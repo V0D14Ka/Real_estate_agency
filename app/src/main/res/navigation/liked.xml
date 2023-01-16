@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/liked"
+    app:startDestination="@id/postLikeFragment">
+
+    <fragment
+        android:id="@+id/postLikeFragment"
+        android:name="com.example.recyclev.screens.post.PostLikeFragment"
+        android:label="Избранные" />
+</navigation>

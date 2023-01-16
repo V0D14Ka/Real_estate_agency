@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/posts"
+    app:startDestination="@id/postsListFragment">
+
+    <fragment
+        android:id="@+id/postsListFragment"
+        android:name="com.example.recyclev.screens.post.PostsListFragment"
+        android:label="Объявления">
+        <action
+            android:id="@+id/action_postsListFragment_to_postDetailsFragment"
+            app:destination="@id/postDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postDetailsFragment"
+        android:name="com.example.recyclev.screens.post.PostDetailsFragment"
+        android:label="Детали" />
+</navigation>

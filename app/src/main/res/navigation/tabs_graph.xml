@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tabs_graph"
+    app:startDestination="@id/posts">
+
+    <include app:graph="@navigation/posts" />
+    <include app:graph="@navigation/liked" />
+    <include app:graph="@navigation/profile" />
+</navigation>

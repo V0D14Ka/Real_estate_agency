@@ -6,23 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recyclev.R
 import com.example.recyclev.model.post.PostActionListener
 import com.example.recyclev.model.post.PostsAdapter
 import com.example.recyclev.databinding.FragmentPostsListBinding
 import com.example.recyclev.model.post.Post
-import com.example.recyclev.screens.factory
-import com.example.recyclev.screens.navigator
-import com.example.recyclev.viewmodel.PostsListViewModel
+import com.example.recyclev.utils.factory
 
 class PostsListFragment : Fragment() {
 
     private lateinit var binding: FragmentPostsListBinding
     private lateinit var adapter: PostsAdapter
 
-    private val viewModel: PostsListViewModel by viewModels{ factory()}
+    private val viewModel: PostsListViewModel by viewModels{ factory() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,7 +34,7 @@ class PostsListFragment : Fragment() {
             }
 
             override fun onPostDetails(post: Post) {
-                navigator().showDetails(post)
+                findNavController().navigate(R.id.action_postsListFragment_to_postDetailsFragment)
             }
 
         })

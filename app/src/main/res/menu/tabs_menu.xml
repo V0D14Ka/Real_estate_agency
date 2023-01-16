@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/posts"
+        android:title="Adverts"
+        android:icon="@drawable/ic_post_avatar" />
+    <item android:id="@id/liked"
+        android:title="Liked"
+        android:icon="@drawable/ic_star" />
+    <item android:id="@id/profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_more" />
+</menu>

@@ -1,14 +1,13 @@
-package com.example.recyclev.screens
+package com.example.recyclev.utils
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.recyclev.Singletons
-import com.example.recyclev.screens.main.Navigator
-import com.example.recyclev.viewmodel.PostsDetailsViewModel
-import com.example.recyclev.viewmodel.PostsListViewModel
-import com.example.recyclev.viewmodel.SignInViewModel
-import com.example.recyclev.viewmodel.SignUpViewModel
+import com.example.recyclev.screens.main.SplashViewModel
+import com.example.recyclev.screens.post.PostsDetailsViewModel
+import com.example.recyclev.screens.post.PostsListViewModel
+import com.example.recyclev.viewmodel.*
 
 
 class ViewModelFactory(
@@ -29,6 +28,9 @@ class ViewModelFactory(
             SignUpViewModel::class.java -> {
                 SignUpViewModel()
             }
+            SplashViewModel::class.java -> {
+                SplashViewModel(singletons.usersRepository)
+            }
             else -> {
                 throw IllegalStateException("Unknown view model class")
             }
@@ -38,5 +40,3 @@ class ViewModelFactory(
 }
 
 fun Fragment.factory() = ViewModelFactory(Singletons)
-
-fun Fragment.navigator() = requireActivity() as Navigator

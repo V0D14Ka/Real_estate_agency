@@ -1,10 +1,13 @@
-package com.example.recyclev.viewmodel
+package com.example.recyclev.screens.post
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.recyclev.model.post.Post
 import com.example.recyclev.model.post.PostRepository
+import com.example.recyclev.utils.MutableUnitLiveEvent
+import com.example.recyclev.utils.publishEvent
+import com.example.recyclev.utils.share
 
 class PostsDetailsViewModel(
     private val postRepository: PostRepository
@@ -12,6 +15,7 @@ class PostsDetailsViewModel(
 
     private val _postDetails = MutableLiveData<Post>()
     val postDetails: LiveData<Post> = _postDetails
+
 
     fun loadPost(postId: Long) {
         if ( _postDetails.value != null ) return
@@ -21,6 +25,5 @@ class PostsDetailsViewModel(
             e.printStackTrace()
         }
     }
-
 
 }

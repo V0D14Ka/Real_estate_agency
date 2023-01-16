@@ -1,6 +1,5 @@
-package com.example.recyclev.viewmodel
+package com.example.recyclev.screens.post
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,6 +7,7 @@ import com.example.recyclev.model.post.Post
 import com.example.recyclev.model.post.PostRepository
 import com.example.recyclev.model.post.PostsListener
 import com.example.recyclev.utils.share
+import com.example.recyclev.viewmodel.requireValue
 import kotlinx.coroutines.launch
 
 class PostsListViewModel(
