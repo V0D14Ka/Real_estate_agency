@@ -15,5 +15,9 @@
     <fragment
         android:id="@+id/postDetailsFragment"
         android:name="com.example.recyclev.screens.post.PostDetailsFragment"
-        android:label="Детали" />
+        android:label="Детали" >
+        <argument
+            android:name="post_id"
+            app:argType="long" />
+    </fragment>
 </navigation>

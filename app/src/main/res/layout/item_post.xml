@@ -22,9 +22,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
         tools:text="John Smit"
         android:textSize="20sp"
-        android:textColor="@color/teal_200"
+        android:textColor="@color/black"
         android:lines="1"
         android:ellipsize="end"
         app:layout_constraintTop_toTopOf="@id/photoImageView"
@@ -36,23 +37,25 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        tools:text="Vladivostok"
-        android:textSize="16sp"
-        android:lines="1"
         android:ellipsize="end"
-        app:layout_constraintTop_toBottomOf="@id/postTitleTextView"
+        android:lines="1"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/moreImageViewButton"
         app:layout_constraintStart_toEndOf="@id/photoImageView"
-        app:layout_constraintEnd_toStartOf="@id/moreImageViewButton"/>
+        app:layout_constraintTop_toTopOf="@+id/postTitleTextView"
+        tools:text="Vladivostok" />
 
     <TextView
         android:id="@+id/postPriceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="1"
         android:text="Стоимость :"
         android:textColor="@color/purple_700"
         android:textSize="14sp"
-        android:lines="1"
-        android:ellipsize="end"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/postDescTextView"
         app:layout_constraintTop_toBottomOf="@id/postDescTextView" />
 
@@ -61,13 +64,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        tools:text="10000₽"
-        android:textSize="14sp"
-        android:lines="1"
         android:ellipsize="end"
-        app:layout_constraintTop_toBottomOf="@id/postDescTextView"
+        android:lines="1"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/moreImageViewButton"
         app:layout_constraintStart_toEndOf="@id/postPriceText"
-        app:layout_constraintEnd_toStartOf="@id/moreImageViewButton"/>
+        app:layout_constraintTop_toBottomOf="@id/postDescTextView"
+        tools:text="10000₽" />
 
     <ImageView
         android:id="@+id/moreImageViewButton"

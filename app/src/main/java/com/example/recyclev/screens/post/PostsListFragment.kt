@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.recyclev.R
-import com.example.recyclev.model.post.PostActionListener
-import com.example.recyclev.model.post.PostsAdapter
 import com.example.recyclev.databinding.FragmentPostsListBinding
 import com.example.recyclev.model.post.Post
+import com.example.recyclev.model.post.PostActionListener
+import com.example.recyclev.model.post.PostsAdapter
 import com.example.recyclev.utils.factory
+
 
 class PostsListFragment : Fragment() {
 
@@ -35,17 +36,18 @@ class PostsListFragment : Fragment() {
             }
 
             override fun onPostDetails(post: Post) {
-                findNavController().navigate(R.id.action_postsListFragment_to_postDetailsFragment)
+                val direction = PostsListFragmentDirections.actionPostsListFragmentToPostDetailsFragment(post.id)
+                findNavController().navigate(direction)
             }
 
         })
-
-        observeChanges()
         observeState()
+        observeChanges()
 
         val layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.addItemDecoration(DividerItemDecoration(context, 1))
 
         return binding.root
     }
@@ -56,7 +58,7 @@ class PostsListFragment : Fragment() {
 
     private fun observeState() = viewModel.state.observe(viewLifecycleOwner) {
         binding.tryAgainContainer.visibility = if(it.apiFailInfo) View.VISIBLE else View.INVISIBLE
-        binding.noUsersTextView.visibility = if(it.emptyListInfo && !it.apiFailInfo) View.VISIBLE else View.INVISIBLE
+        binding.noUsersTextView.visibility = if(it.emptyList && !it.apiFailInfo) View.VISIBLE else View.INVISIBLE
         binding.progressBar.visibility = if (it.showProgress) View.VISIBLE else View.INVISIBLE
     }
 }

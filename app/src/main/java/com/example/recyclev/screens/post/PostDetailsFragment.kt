@@ -1,13 +1,16 @@
 package com.example.recyclev.screens.post
 
+import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.recyclev.R
 import com.example.recyclev.databinding.FragmentPostDetailBinding
@@ -17,10 +20,14 @@ class PostDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentPostDetailBinding
     private val viewModel: PostsDetailsViewModel by viewModels { factory() }
+    private val args by navArgs<PostDetailsFragmentArgs>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.loadPost(requireArguments().getLong(ARG_POST_ID))
+        viewModel.loadPost(args.postId)
     }
+
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,9 +36,10 @@ class PostDetailsFragment : Fragment() {
         binding = FragmentPostDetailBinding.inflate(layoutInflater, container, false)
 
         viewModel.postDetails.observe(viewLifecycleOwner, Observer {
-            binding.postTitleTextView.text = it.owner
-            binding.postPriceTextView.text = it.price.toString()
-            binding.postTownTextView.text = it.address
+            val phone : String = it.phone?: "Продавец не указал номер телефона."
+            binding.postTitleTextView.text = it.title
+            binding.postPriceTextView.text = "Стоимость: " + it.price.toString() + "₽"
+            binding.postTownTextView.text = "Адрес: " + it.address
             if (it.preview.isNotBlank()) {
                 Glide.with(this)
                     .load(it.preview)
@@ -42,21 +50,19 @@ class PostDetailsFragment : Fragment() {
                     .load(R.drawable.ic_post_avatar)
                     .into(binding.photoImageView)
             }
-            binding.postDetailsTextView.text = it.description
+            binding.postDetailsTextView.text = "Описание: " + it.description
+            binding.deleteButton.setOnClickListener {
+                onAlertDialog(requireView(), phone)
+            }
         })
         return binding.root
     }
 
-
-
-    companion object {
-
-        private const val ARG_POST_ID = "ARG_POST_ID"
-
-        fun newInstance(postId: Long) : PostDetailsFragment {
-            val fragment = PostDetailsFragment()
-            fragment.arguments = bundleOf(ARG_POST_ID to postId)
-            return fragment
-        }
+    private fun onAlertDialog(view: View, message: String) {
+        val builder = AlertDialog.Builder(view.context)
+        builder.setTitle("Телефон продавца")
+        builder.setMessage(message)
+        builder.setPositiveButton("Закрыть") { dialog, id -> }
+        builder.show()
     }
 }

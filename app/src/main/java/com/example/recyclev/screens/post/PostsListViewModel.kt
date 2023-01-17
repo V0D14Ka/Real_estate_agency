@@ -1,5 +1,6 @@
 package com.example.recyclev.screens.post
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -46,7 +47,7 @@ class PostsListViewModel(
     }
 
     private fun showProgress() {
-        _state.value = _state.requireValue().copy(emptyList = true, getPostInProgress = true, apiFail = false)
+        _state.value = _state.requireValue().copy(emptyList = false, getPostInProgress = true, apiFail = false)
     }
 
     private fun hideProgress() {
@@ -67,7 +68,7 @@ class PostsListViewModel(
     ) {
         val showProgress: Boolean get() = getPostInProgress
         val enableViews: Boolean get() = !getPostInProgress
-        val emptyListInfo: Boolean get() = !emptyList
+        val emptyListInfo: Boolean get() = emptyList
         val apiFailInfo: Boolean get() = apiFail
     }
 }

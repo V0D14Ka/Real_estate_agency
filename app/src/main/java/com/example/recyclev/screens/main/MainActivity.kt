@@ -69,6 +69,16 @@ class MainActivity : AppCompatActivity() {
 //        }
     }
 
+    override fun onSupportNavigateUp(): Boolean = (navController?.navigateUp() ?: false) || super.onSupportNavigateUp()
+
+    override fun onBackPressed() {
+        if (isStartDestination(navController?.currentDestination)) {
+            super.onBackPressed()
+        } else {
+            navController?.popBackStack()
+        }
+    }
+
     private fun prepareTitle(label: CharSequence?, arguments: Bundle?): String {
         // code for this method has been copied from Google sources :)
 
