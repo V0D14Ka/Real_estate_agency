@@ -28,6 +28,7 @@ class PostsListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentPostsListBinding.inflate(inflater, container, false)
+        binding.tryAgainButton.setOnClickListener{ viewModel.getPostsFromApi() }
         adapter = PostsAdapter(object : PostActionListener{
             override fun onPostFavorite(post: Post) {
                 TODO("Not yet implemented")
@@ -54,7 +55,8 @@ class PostsListFragment : Fragment() {
     }
 
     private fun observeState() = viewModel.state.observe(viewLifecycleOwner) {
-        binding.noUsersTextView.visibility = if(it.emptyListInfo) View.VISIBLE else View.INVISIBLE
+        binding.tryAgainContainer.visibility = if(it.apiFailInfo) View.VISIBLE else View.INVISIBLE
+        binding.noUsersTextView.visibility = if(it.emptyListInfo && !it.apiFailInfo) View.VISIBLE else View.INVISIBLE
         binding.progressBar.visibility = if (it.showProgress) View.VISIBLE else View.INVISIBLE
     }
 }

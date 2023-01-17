@@ -33,9 +33,8 @@ class PostsListViewModel(
             showProgress()
             postRepository.getPostsFromApi()
             postRepository.addListener(listener)
-            if (_posts.value.isNullOrEmpty()) State(emptyList = true)
         } catch (e: Exception){
-            TODO()
+            apiFail()
         } finally {
             hideProgress()
         }
@@ -46,28 +45,29 @@ class PostsListViewModel(
         postRepository.removeListener(listener)
     }
 
-    fun loadPosts() {
-        postRepository.addListener(listener)
-    }
-
-    fun deletePost(post: Post) {
-        postRepository.deletePost(post)
-    }
-
     private fun showProgress() {
-        _state.value = State(getPostInProgress = true)
+        _state.value = _state.requireValue().copy(emptyList = true, getPostInProgress = true, apiFail = false)
     }
 
     private fun hideProgress() {
         _state.value = _state.requireValue().copy(getPostInProgress = false)
+        if (_posts.value.isNullOrEmpty())
+            _state.value = _state.requireValue().copy(emptyList = true)
+    }
+
+    private fun apiFail() {
+        _state.value = _state.requireValue().copy(apiFail = true)
     }
 
     data class State(
         val getPostInProgress: Boolean = false,
-        val emptyList: Boolean = false
+        val emptyList: Boolean = false,
+        val apiFail: Boolean = false
+
     ) {
         val showProgress: Boolean get() = getPostInProgress
         val enableViews: Boolean get() = !getPostInProgress
         val emptyListInfo: Boolean get() = !emptyList
+        val apiFailInfo: Boolean get() = apiFail
     }
 }
