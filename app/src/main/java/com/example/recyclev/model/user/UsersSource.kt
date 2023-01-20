@@ -17,7 +17,7 @@ interface UsersSource {
      * @throws BackendException
      * @throws ParseBackendResponseException
      */
-    suspend fun signUp(signUpData: SignUpData)
+    suspend fun signUp(signUpData: SignUpData): Long
 
     /**
      * Get the account info of the current signed-in user.

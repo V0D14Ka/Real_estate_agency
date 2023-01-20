@@ -26,6 +26,7 @@ class IncorrectPasswordException(
     cause: Throwable
 ) : AppException(cause = cause)
 
+
 // BackendException with statusCode=401 is usually mapped to this exception
 class AuthException(
     cause: Throwable

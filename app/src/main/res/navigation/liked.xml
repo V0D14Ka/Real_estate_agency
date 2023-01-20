@@ -7,5 +7,17 @@
     <fragment
         android:id="@+id/postLikeFragment"
         android:name="com.example.recyclev.screens.post.PostLikeFragment"
-        android:label="Избранные" />
+        android:label="Избранные" >
+        <action
+            android:id="@+id/action_postLikeFragment_to_postDetailsFragment2"
+            app:destination="@id/postDetailsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/postDetailsFragment2"
+        android:name="com.example.recyclev.screens.post.PostDetailsFragment"
+        android:label="Детали">
+        <argument
+            android:name="post_id"
+            app:argType="long" />
+    </fragment>
 </navigation>

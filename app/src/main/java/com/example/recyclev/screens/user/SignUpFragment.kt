@@ -44,6 +44,7 @@ class SignUpFragment : Fragment() {
             email = binding.emailEditText.text.toString(),
             username = binding.usernameEditText.text.toString(),
             password = binding.passwordEditText.text.toString(),
+            phone = binding.phoneEditText.text.toString(),
             repeatPassword = binding.repeatPasswordEditText.text.toString(),
         )
         viewModel.signUp(signUpData)
@@ -52,6 +53,7 @@ class SignUpFragment : Fragment() {
     private fun observeState() = viewModel.state.observe(viewLifecycleOwner) {
         binding.usernameEditText.error = if (it.emptyUsernameError) getString(R.string.field_is_empty) else null
         binding.emailEditText.error = if (it.emptyEmailError) getString(R.string.field_is_empty) else null
+        binding.phoneEditText.error = if (it.emptyPhoneError) getString(R.string.field_is_empty) else null
         binding.passwordEditText.error = if (it.emptyPasswordError) getString(R.string.field_is_empty) else null
         binding.repeatPasswordEditText.error = if (it.emptyRepeatPasswordError) getString(R.string.field_is_empty) else null
 

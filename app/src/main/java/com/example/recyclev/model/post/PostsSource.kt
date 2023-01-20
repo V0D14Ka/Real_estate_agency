@@ -23,6 +23,8 @@ interface PostsSource {
      */
     suspend fun getPosts(): List<Post>
 
+    suspend fun getPost(id: Char): Post
+
     /**
      * Change the username of the current signed-in user.
      * @throws ConnectionException

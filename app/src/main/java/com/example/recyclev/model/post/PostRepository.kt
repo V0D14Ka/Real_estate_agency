@@ -1,16 +1,25 @@
 package com.example.recyclev.model.post
 
-import com.github.javafaker.Faker
+import android.util.Log
+import com.example.recyclev.model.user.User
+import com.example.recyclev.model.user.UsersSource
 
 typealias PostsListener = (posts: List<Post>) -> Unit
 
+typealias LikedPostsListener = (likedposts: List<Post>) -> Unit
+
 class PostRepository (
-    private val postsSource: PostsSource
+    private val postsSource: PostsSource,
+    private val usersSource: UsersSource
 ) {
 
     private var posts = mutableListOf<Post>()
 
+    private var likedposts = mutableListOf<Post>()
+
     private val listeners = mutableListOf<PostsListener>()
+
+    private val likedlisteners = mutableListOf<LikedPostsListener>()
 
 //    init{
 //        val faker = Faker.instance()
@@ -27,6 +36,18 @@ class PostRepository (
 
     suspend fun getPostsFromApi() {
         posts = postsSource.getPosts().toMutableList()
+    }
+
+    private suspend fun getPostFromApi(id: Char) {
+        val p: Post = postsSource.getPost(id)
+        likedposts.add(p)
+    }
+
+
+    suspend fun getLikedPosts() {
+        val u : User = usersSource.getUser()
+        if (u.favorite_adverts.isNotEmpty()) u.favorite_adverts.forEach { getPostFromApi(it[-1])}
+        getPostFromApi('1')
     }
 
     fun getPosts(): List<Post> {
@@ -50,8 +71,17 @@ class PostRepository (
         listener.invoke(posts)
     }
 
+    fun addLikedListener(listener: LikedPostsListener){
+        likedlisteners.add(listener)
+        listener.invoke(likedposts)
+    }
+
     fun removeListener(listener: PostsListener){
         listeners.remove(listener)
+    }
+
+    fun removeLikedListener(listener: LikedPostsListener){
+        likedlisteners.remove(listener)
     }
 
     private fun notifyChanges(){

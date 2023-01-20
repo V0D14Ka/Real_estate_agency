@@ -12,4 +12,7 @@ interface AppSettings {
      */
     fun setCurrentToken(token: String?)
 
+    fun setCurrentId(id: Long?)
+
+    fun getCurrentId(): Long?
 }

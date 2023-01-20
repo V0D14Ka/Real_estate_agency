@@ -5,6 +5,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 
 interface UsersApi {
 
@@ -14,11 +15,11 @@ interface UsersApi {
     ): SignInResponseEntity
 
     @POST("auth/users/")
-    suspend fun signUp(@Body body : SignUpRequestEntity)
+    suspend fun signUp(@Body body : SignUpRequestEntity) : SignUpResponseEntity
 
     // todo(Убрать хардкод)
-    @GET("users/2")
-    suspend fun getUser(): GetUserResponseEntity
+    @GET("users/{id}")
+    suspend fun getUser( @Path("id") id: Long ): GetUserResponseEntity
 
     @PUT("")
     suspend fun setUsername(@Body body: UpdateUsernameRequestEntity)

@@ -1,5 +1,6 @@
 package com.example.recyclev.sources.user
 
+import com.example.recyclev.Singletons.appSettings
 import com.example.recyclev.model.user.SignUpData
 import com.example.recyclev.model.user.User
 import com.example.recyclev.model.user.UsersSource
@@ -27,17 +28,18 @@ class RetrofitUsersSource (
     }
 
     override suspend fun signUp(signUpData: SignUpData
-    ) = wrapRetrofitExceptions {
+    ): Long = wrapRetrofitExceptions {
         val signUpRequestEntity = SignUpRequestEntity(
             email = signUpData.email,
             username = signUpData.username,
-            password = signUpData.password
+            password = signUpData.password,
+            phone = signUpData.phone
         )
-        usersApi.signUp(signUpRequestEntity)
+        usersApi.signUp(signUpRequestEntity).id
     }
 
     override suspend fun getUser(): User = wrapRetrofitExceptions {
-        usersApi.getUser().toUser()
+        usersApi.getUser(appSettings.getCurrentId()!!).toUser()
     }
 
     override suspend fun setUsername(username: String

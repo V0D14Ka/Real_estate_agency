@@ -65,7 +65,7 @@ class UsersRepository(
      */
     suspend fun signUp(signUpData: SignUpData) {
         signUpData.validate()
-        try {
+        val id = try {
             usersSource.signUp(signUpData)
         } catch (e: BackendException) {
             // user with such email already exists
@@ -79,6 +79,7 @@ class UsersRepository(
             }
             else throw e
         }
+        appSettings.setCurrentId(id)
     }
 
 

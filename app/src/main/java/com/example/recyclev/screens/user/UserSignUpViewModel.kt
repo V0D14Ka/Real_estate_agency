@@ -63,7 +63,8 @@ class SignUpViewModel(
             emptyUsernameError = e.field == Field.Username,
             emptyEmailError = e.field == Field.Email,
             emptyPasswordError = e.field == Field.Password,
-            emptyRepeatPasswordError = e.field == Field.Password
+            emptyRepeatPasswordError = e.field == Field.Password,
+            emptyPhoneError = e.field == Field.Password
         )
     }
 
@@ -107,6 +108,7 @@ class SignUpViewModel(
     data class State(
         val emptyUsernameError: Boolean = false,
         val emptyEmailError: Boolean = false,
+        val emptyPhoneError: Boolean = false,
         val emptyPasswordError: Boolean = false,
         val emptyRepeatPasswordError: Boolean = false,
         val passwordMismatchError: Boolean = false,

@@ -42,7 +42,8 @@ object Singletons {
 
     val postRepository: PostRepository by lazy {
         PostRepository(
-            postsSource = postsSource
+            postsSource = postsSource,
+            usersSource = usersSource
         )
     }
     /**
