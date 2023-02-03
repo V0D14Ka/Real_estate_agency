@@ -49,8 +49,9 @@ class UsersRepository(
                 throw e
             }
         }
+        val tok = "Token $token"
         // success! got auth token -> save it
-        appSettings.setCurrentToken(token)
+        appSettings.setCurrentToken(tok)
         // and load account data
         accountLazyFlowSubject.updateAllValues(usersSource.getUser())
     }

@@ -25,6 +25,7 @@ interface PostsSource {
 
     suspend fun getPost(id: Char): Post
 
+    suspend fun likePost(id: Long) : Post
     /**
      * Change the username of the current signed-in user.
      * @throws ConnectionException

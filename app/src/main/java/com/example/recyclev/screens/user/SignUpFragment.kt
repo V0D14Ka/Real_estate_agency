@@ -63,6 +63,7 @@ class SignUpFragment : Fragment() {
             binding.repeatPasswordEditText.text.clear()
         }
 
+        binding.phoneEditText.isEnabled = it.enableViews
         binding.createAccountButton.isEnabled = it.enableViews
         binding.usernameEditText.isEnabled = it.enableViews
         binding.emailEditText.isEnabled = it.enableViews

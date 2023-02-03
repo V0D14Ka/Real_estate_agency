@@ -1,6 +1,7 @@
 package com.example.recyclev.model.post
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +43,7 @@ class PostsAdapter(
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
         val post = posts[position]
         with(holder.binding){
+            Log.e("aaa", post.is_favorite.toString())
             holder.itemView.tag = post
             moreImageViewButton.tag = post
             postTitleTextView.text = post.title
@@ -68,7 +70,7 @@ class PostsAdapter(
         val post = v.tag as Post
         when(v.id) {
             R.id.moreImageViewButton -> {
-
+                actionListener.onPostFavorite(post)
             }
             else -> {
                 actionListener.onPostDetails(post)

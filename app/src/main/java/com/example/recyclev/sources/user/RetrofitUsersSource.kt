@@ -6,6 +6,7 @@ import com.example.recyclev.model.user.User
 import com.example.recyclev.model.user.UsersSource
 import com.example.recyclev.sources.base.BaseRetrofitSource
 import com.example.recyclev.sources.base.RetrofitConfig
+import com.example.recyclev.sources.user.entities.GetUserResponseEntity
 import com.example.recyclev.sources.user.entities.SignInRequestEntity
 import com.example.recyclev.sources.user.entities.SignUpRequestEntity
 import com.example.recyclev.sources.user.entities.UpdateUsernameRequestEntity
@@ -39,7 +40,7 @@ class RetrofitUsersSource (
     }
 
     override suspend fun getUser(): User = wrapRetrofitExceptions {
-        usersApi.getUser(appSettings.getCurrentId()!!).toUser()
+        usersApi.getUser().toUser()
     }
 
     override suspend fun setUsername(username: String

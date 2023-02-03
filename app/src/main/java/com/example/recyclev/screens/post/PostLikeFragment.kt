@@ -31,7 +31,7 @@ class PostLikeFragment: Fragment(R.layout.fragment_posts_list) {
         binding = FragmentPostLikeBinding.inflate(inflater, container, false)
         adapter = PostsAdapter(object : PostActionListener {
             override fun onPostFavorite(post: Post) {
-                TODO("Not yet implemented")
+                viewModel.like(post.id)
             }
 
             override fun onPostDetails(post: Post) {
@@ -42,7 +42,6 @@ class PostLikeFragment: Fragment(R.layout.fragment_posts_list) {
         })
         observeState()
         observeChanges()
-
 
         val layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.layoutManager = layoutManager

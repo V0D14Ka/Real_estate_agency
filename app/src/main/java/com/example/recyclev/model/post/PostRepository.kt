@@ -38,16 +38,15 @@ class PostRepository (
         posts = postsSource.getPosts().toMutableList()
     }
 
-    private suspend fun getPostFromApi(id: Char) {
-        val p: Post = postsSource.getPost(id)
-        likedposts.add(p)
+    suspend fun getLikedPosts() {
+        if (!posts.isNullOrEmpty())
+            posts.forEach {
+                if (it.is_favorite) likedposts.add(it)
+            }
     }
 
-
-    suspend fun getLikedPosts() {
-        val u : User = usersSource.getUser()
-        if (u.favorite_adverts.isNotEmpty()) u.favorite_adverts.forEach { getPostFromApi(it[-1])}
-        getPostFromApi('1')
+    suspend fun LikePost(id: Long) {
+        postsSource.likePost(id)
     }
 
     fun getPosts(): List<Post> {

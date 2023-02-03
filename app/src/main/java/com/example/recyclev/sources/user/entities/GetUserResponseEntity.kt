@@ -4,15 +4,13 @@ import com.example.recyclev.model.user.User
 
 data class GetUserResponseEntity(
     val Id: Long,
-    val email: String,
     val username: String,
     val phone: String,
-    val favorite_adverts: Array<String>
 ) {
     fun toUser(): User = User(
-        email = email,
+        email = null,
         phone = phone,
-        favorite_adverts = favorite_adverts,
+        favorite_adverts = null,
         username = username,
         id = Id
     )

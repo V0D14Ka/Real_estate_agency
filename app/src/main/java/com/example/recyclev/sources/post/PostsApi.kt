@@ -16,4 +16,7 @@ interface PostsApi {
     @GET("adverts/{id}")
     suspend fun getPost( @Path("id") id: Char): Post
 
+    @GET("adverts/{id}/?favorite=true")
+    suspend fun likePost(@Path("id") id: Long) : Post
+
 }

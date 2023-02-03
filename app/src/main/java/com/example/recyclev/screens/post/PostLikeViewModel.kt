@@ -41,6 +41,14 @@ class PostLikeViewModel(
         }
     }
 
+    fun like(id: Long) = viewModelScope.launch {
+        try {
+            postRepository.LikePost(id)
+        } catch (e: Exception){
+            apiFail()
+        }
+    }
+
     override fun onCleared() {
         super.onCleared()
         postRepository.removeLikedListener(listener)

@@ -32,7 +32,7 @@ class PostsListFragment : Fragment() {
         binding.tryAgainButton.setOnClickListener{ viewModel.getPostsFromApi() }
         adapter = PostsAdapter(object : PostActionListener{
             override fun onPostFavorite(post: Post) {
-                TODO("Not yet implemented")
+                viewModel.like(post.id)
             }
 
             override fun onPostDetails(post: Post) {

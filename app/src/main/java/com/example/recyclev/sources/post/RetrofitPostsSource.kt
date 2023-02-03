@@ -22,4 +22,8 @@ class RetrofitPostsSource (
         postsApi.getPost(id)
     }
 
+    override suspend fun likePost(id: Long): Post = wrapRetrofitExceptions{
+        postsApi.likePost(id)
+    }
+
 }
