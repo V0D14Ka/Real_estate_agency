@@ -5,6 +5,7 @@ data class User(
     val username: String,
     val email: String?,
     val phone: String,
+    val avatar: String,
     val favorite_adverts: Array<String>?,
     val createdAt: Long = UNKNOWN_CREATED_AT
 ) {

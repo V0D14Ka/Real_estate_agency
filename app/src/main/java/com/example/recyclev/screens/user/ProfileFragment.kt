@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
+import com.bumptech.glide.Glide
 import com.example.recyclev.R
 import com.example.recyclev.databinding.FragmentProfileBinding
 import com.example.recyclev.databinding.FragmentSignInBinding
@@ -43,10 +44,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             if (user == null) return@observe
             binding.phoneTextView.text = user.phone
             binding.usernameTextView.text = user.username
-//            binding.createdAtTextView.text = if (user.createdAt == User.UNKNOWN_CREATED_AT)
-//                "xxx"
-//            else
-//                formatter.format(Date(user.createdAt))
+            if (user.avatar.isNotBlank()) {
+                Glide.with(this)
+                    .load(user.avatar)
+                    .circleCrop()
+                    .into(binding.userImage)
+            } else {
+                Glide.with(this)
+                    .load(R.drawable.ic_user_avatar)
+                    .into(binding.userImage)
+            }
         }
     }
 
