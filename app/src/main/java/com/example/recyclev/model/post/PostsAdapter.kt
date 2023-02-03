@@ -46,8 +46,9 @@ class PostsAdapter(
             Log.e("aaa", post.is_favorite.toString())
             holder.itemView.tag = post
             moreImageViewButton.tag = post
-            postTitleTextView.text = post.title
-            postDescTextView.text = post.address
+            postTitleTextView.text = post.advert_type
+            postDescTextView.text = post.city
+            postInfo.text = post.street + " / " + post.floor + " этаж."
             postPriceTextView.text = post.price.toString() + "₽"
             if(post.preview.isNotBlank()) {
                 Glide.with(photoImageView)

@@ -37,9 +37,11 @@ class PostDetailsFragment : Fragment() {
 
         viewModel.postDetails.observe(viewLifecycleOwner, Observer {
             val phone : String = it.phone?: "Продавец не указал номер телефона."
-            binding.postTitleTextView.text = it.title
+            binding.postTitleTextView.text = it.advert_type
+            binding.postInfoTextView.text = it.title
+            binding.postTownTextView.text = "Город: " + it.city
+            binding.postAdrTextView.text =  "Улица: " + it.street + " / " + it.floor + " этаж."
             binding.postPriceTextView.text = "Стоимость: " + it.price.toString() + "₽"
-            binding.postTownTextView.text = "Адрес: " + it.address
             if (it.preview.isNotBlank()) {
                 Glide.with(this)
                     .load(it.preview)

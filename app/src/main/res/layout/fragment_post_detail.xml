@@ -17,8 +17,8 @@
 
             <ImageView
                 android:id="@+id/photoImageView"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 tools:src="@drawable/ic_post_avatar"
@@ -29,49 +29,87 @@
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="House" />
+
+            <TextView
+                android:id="@+id/postInfoTextView"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:textColor="#7B68EE"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                tools:text="John Smith" />
+                tools:text="Info" />
 
             <TextView
                 android:id="@+id/postTownTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:textColor="@color/black"
-                android:fontFamily="casual"
-                android:layout_margin="16dp"
+                android:textColor="#000080"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 tools:text="Город: " />
+
+            <TextView
+                android:id="@+id/postAdrTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textColor="#000080"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="Улица: " />
 
             <TextView
                 android:id="@+id/postPriceTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="casual"
-                android:layout_margin="16dp"
-                android:textColor="@color/black"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:textColor="#000080"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 android:text="Стоимость: " />
+
+            <TextView
+                android:id="@+id/postDetailsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                android:textSize="20sp"
+                android:text="Описание: " />
 
             <TextView
                 android:id="@+id/postDetailsTextView"
                 android:layout_width="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:fontFamily="casual"
                 android:textColor="@color/black"
-                android:layout_margin="16dp"
+                android:layout_marginTop="5dp"
                 android:textSize="16sp"
-                android:text="Описание: " />
+                tools:text="Описание: " />
 
             <Button
                 android:id="@+id/deleteButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="25dp"
                 android:text="Показать контакты"
                 android:textAllCaps="true" />
 
