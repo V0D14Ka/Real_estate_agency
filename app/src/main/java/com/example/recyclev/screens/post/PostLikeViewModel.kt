@@ -47,6 +47,8 @@ class PostLikeViewModel(
         } catch (e: Exception){
             apiFail()
         }
+        if (_posts.value.isNullOrEmpty()) _state.value = _state.requireValue().copy(emptyList = true)
+        Log.e("asd", _posts.value.isNullOrEmpty().toString())
     }
 
     override fun onCleared() {

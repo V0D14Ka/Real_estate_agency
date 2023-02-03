@@ -59,6 +59,9 @@ class PostsAdapter(
             }else {
                 photoImageView.setImageResource(R.drawable.ic_post_avatar)
             }
+            if (post.is_favorite) {
+                moreImageViewButton.setImageResource(R.drawable.ic_star)
+            } else moreImageViewButton.setImageResource(R.drawable.ic_unpicked_star)
         }
     }
 

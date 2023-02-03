@@ -53,11 +53,12 @@ class PostLikeFragment: Fragment(R.layout.fragment_posts_list) {
 
     private fun observeChanges() = viewModel.posts.observe(viewLifecycleOwner) {
         adapter.posts = it
+        binding.noUsersTextView.visibility = if (it.isEmpty()) View.VISIBLE else View.INVISIBLE
     }
 
     private fun observeState() = viewModel.state.observe(viewLifecycleOwner) {
         binding.tryAgainContainer.visibility = if(it.apiFailInfo) View.VISIBLE else View.INVISIBLE
-        binding.noUsersTextView.visibility = if(it.emptyList && !it.apiFailInfo) View.VISIBLE else View.INVISIBLE
+        binding.noUsersTextView.visibility = if(it.emptyListInfo && !it.apiFailInfo) View.VISIBLE else View.INVISIBLE
         binding.progressBar.visibility = if (it.showProgress) View.VISIBLE else View.INVISIBLE
     }
 }

@@ -22,17 +22,31 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/dataContainer"
+
+            app:layout_constraintBottom_toTopOf="@id/userImage"
             app:layout_constraintVertical_chainStyle="packed"
             android:text="Profile"/>
+
+        <ImageView
+            android:id="@+id/userImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_user_avatar"
+            android:layout_marginTop="220dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/screenTitleTextView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/dataContainer"
+            />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/dataContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/screenTitleTextView"
-            app:layout_constraintBottom_toTopOf="@id/logoutButton"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@id/userImage"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 

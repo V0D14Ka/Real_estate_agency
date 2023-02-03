@@ -11,7 +11,7 @@ data class Post (
     val floor: Long,
     val phone: String,
     val title: String,
-    val is_favorite: Boolean,
+    var is_favorite: Boolean,
     val sold: Boolean,
     val owner: String,
     val price: Long,

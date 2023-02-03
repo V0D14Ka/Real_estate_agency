@@ -18,7 +18,7 @@ class RetrofitPostsSource (
         postsApi.getPosts()
     }
 
-    override suspend fun getPost(id: Char): Post = wrapRetrofitExceptions {
+    override suspend fun getPost(id: Long): Post = wrapRetrofitExceptions {
         postsApi.getPost(id)
     }
 

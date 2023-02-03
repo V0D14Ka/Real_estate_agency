@@ -23,7 +23,7 @@ interface PostsSource {
      */
     suspend fun getPosts(): List<Post>
 
-    suspend fun getPost(id: Char): Post
+    suspend fun getPost(id: Long): Post
 
     suspend fun likePost(id: Long) : Post
     /**

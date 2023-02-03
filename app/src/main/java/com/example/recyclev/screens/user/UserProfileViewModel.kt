@@ -29,7 +29,6 @@ class UserProfileViewModel(
     }
 
     fun logout() {
-        // now logout is not async, so simply call it and restart the app from login screen
         usersRepository.logout()
         restartAppFromLoginScreen()
     }
